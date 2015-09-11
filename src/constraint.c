@@ -273,6 +273,30 @@ Constraint *create_not_equal_to_double_constraint(double expected_value, const c
     return constraint;
 }
 
+Constraint *create_greater_than_double_constraint(double expected_value, const char *expected_value_name) {
+    Constraint *constraint = create_constraint_expecting(box_double(expected_value), expected_value_name);
+    constraint->type = DOUBLE_COMPARER;
+
+    constraint->compare = &compare_want_double;
+    constraint->execute = &test_want_double;
+    constraint->name = "greater than double";
+    constraint->destroy = &destroy_double_constraint;
+
+    return constraint;
+}
+
+Constraint *create_less_than_double_constraint(double expected_value, const char *expected_value_name) {
+    Constraint *constraint = create_constraint_expecting(box_double(expected_value), expected_value_name);
+    constraint->type = DOUBLE_COMPARER;
+
+    constraint->compare = &compare_do_not_want_double;
+    constraint->execute = &test_do_not_want_double;
+    constraint->name = "less than double";
+    constraint->destroy = &destroy_double_constraint;
+
+    return constraint;
+}
+
 Constraint *create_return_value_constraint(intptr_t value_to_return) {
     Constraint* constraint = create_constraint();
     constraint->type = RETURN_VALUE;

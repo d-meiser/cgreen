@@ -151,6 +151,14 @@ Ensure(zero_should_assert_float_not_equal_to_one) {
     assert_that_double(x, is_not_equal_to_double(y));
 }
 
+Ensure(zero_should_assert_float_less_than_one) {
+    assert_that_double(0, is_less_than_double(1));
+}
+
+Ensure(one_should_assert_float_greater_than_zero) {
+    assert_that_double(1, is_greater_than_double(0));
+}
+
 Ensure(one_should_assert_double_equal_to_one) {
     assert_that_double(1, is_equal_to_double(1));
 }

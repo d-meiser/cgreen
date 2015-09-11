@@ -145,6 +145,24 @@ void assert_double_not_equal_(const char *file, int line, const char *expression
             "[%s] should not be [%f] within %d significant figures but was [%f]\n", expression, expected, significant_figures, tried);
 }
 
+void assert_double_greater_than_(const char *file, int line, const char *expression, double tried, double expected) {
+    (*get_test_reporter()->assert_true)(
+            get_test_reporter(),
+            file,
+            line,
+            tried > expected,
+            "[%s] should be greater than [%f] but was [%f]\n", expression, expected, tried);
+}
+
+void assert_double_less_than_(const char *file, int line, const char *expression, double tried, double expected) {
+    (*get_test_reporter()->assert_true)(
+            get_test_reporter(),
+            file,
+            line,
+            tried < expected,
+            "[%s] should be less than [%f] but was [%f]\n", expression, expected, tried);
+}
+
 void assert_string_equal_(const char *file, int line, const char *expression, const char *tried, const char *expected) {
     (*get_test_reporter()->assert_true)(
             get_test_reporter(),
