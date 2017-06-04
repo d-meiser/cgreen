@@ -4,14 +4,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#if defined(_MSC_VER)
+#include <BaseTsd.h>
+typedef SSIZE_T ssize_t;
+#else
 #include <unistd.h>
+#endif
+
 
 #ifdef __ANDROID__
 #include "cgreen/internal/android_headers/androidcompat.h"
 #endif // #ifdef __ANDROID__
 
 #ifdef _MSC_VER
-#include <wincompat.h>
+#include <cgreen/internal/windows_headers/wincompat.h>
 //disable warning on windows
 //'getpid','write': The POSIX name for this item is deprecated. Instead, use the ISO C++ conformant name: _getpid, _write
 #pragma warning(disable:4996)

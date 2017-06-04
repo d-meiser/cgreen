@@ -13,7 +13,7 @@
 #endif // #ifdef __ANDROID__
 
 #ifdef _MSC_VER
-#include <wincompat.h>
+#include <cgreen/internal/windows_headers/wincompat.h>
 #endif
 
 #include <cgreen/cdash_reporter.h>

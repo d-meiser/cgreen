@@ -27,7 +27,7 @@ CgreenValue make_cgreen_pointer_value(void *pointer) {
 }
 
 CgreenValue make_cgreen_double_value(double d) {
-    CgreenValue value = {DOUBLE, {0}};
+    CgreenValue value = {CG_DOUBLE, {0}};
     value.value.double_value = d;
     return value;
 }

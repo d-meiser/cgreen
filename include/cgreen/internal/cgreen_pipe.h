@@ -1,7 +1,12 @@
 #ifndef CGREEN_PIPE_HEADER
 #define CGREEN_PIPE_HEADER
 
+#if defined(_MSC_VER)
+#include <BaseTsd.h>
+typedef SSIZE_T ssize_t;
+#else
 #include <unistd.h>
+#endif
 
 #ifdef __cplusplus
 namespace cgreen {

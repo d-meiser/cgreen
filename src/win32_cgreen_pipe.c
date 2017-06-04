@@ -1,10 +1,15 @@
 #ifdef WIN32
 
 #include "cgreen/internal/cgreen_pipe.h"
+#if defined(_MSC_VER)
+#include <BaseTsd.h>
+typedef SSIZE_T ssize_t;
+#else
 #include <unistd.h>
+#endif
 #include <stdio.h>
 #include <winsock2.h>
-#include <wincompat.h>
+#include <cgreen/internal/windows_headers/wincompat.h>
 
 
 ssize_t cgreen_pipe_read(int p, void *buf, size_t count)

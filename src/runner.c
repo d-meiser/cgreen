@@ -8,7 +8,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/types.h>
+#if defined(_MSC_VER)
+#include <BaseTsd.h>
+typedef SSIZE_T ssize_t;
+#else
 #include <unistd.h>
+#endif
 #include <cgreen/internal/cgreen_time.h>
 
 #include "runner.h"

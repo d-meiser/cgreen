@@ -20,7 +20,7 @@
 
 
 #ifdef _MSC_VER
-#include "wincompat.h"
+#include "cgreen/internal/windows_headers/wincompat.h"
 #endif
 
 #include "constraint_internal.h"

@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-typedef enum {INTEGER, STRING, DOUBLE, POINTER} CgreenValueType;
+typedef enum {INTEGER, STRING, CG_DOUBLE, POINTER} CgreenValueType;
 
 typedef struct {
     CgreenValueType type;

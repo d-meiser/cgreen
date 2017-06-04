@@ -14,7 +14,7 @@
 #endif // #ifdef __ANDROID__
 
 #ifdef _MSC_VER
-#include "wincompat.h"
+#include "cgreen/internal/windows_headers/wincompat.h"
 #endif
 
 #include "constraint_internal.h"
@@ -71,10 +71,12 @@ static int find_index_of_difference(void *expected, void *actual, size_t size_to
     char *expectedp = expected;
     char *actualp = actual;
 
+    int i = 0;
     while (size_to_compare--) {
         if (*expectedp++ != *actualp++) {
-            return (int)((void *)actualp - actual);
+	    return i;
         }
+	++i;
     }
 
     return -1;

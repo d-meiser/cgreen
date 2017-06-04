@@ -140,7 +140,7 @@ static void handle_missing_expectation_for(const char *function, const char *moc
 
 
 static CgreenValue convert_boxed_double_to_cgreen_value(CgreenValue actual) {
-    actual.type = DOUBLE;
+    actual.type = CG_DOUBLE;
     actual.value.double_value = unbox_double(actual.value.integer_value);
     return actual;
 }
@@ -203,7 +203,7 @@ intptr_t mock_(TestReporter* test_reporter, const char *function, const char *mo
     cgreen_vector_add(successfully_mocked_calls, (void*)function);
 
     stored_result = stored_result_or_default_for(expectation->constraints);
-    // FIXME: Should verify that return value is not a DOUBLE as `mock_()' can not
+    // FIXME: Should verify that return value is not a CG_DOUBLE as `mock_()' can not
     // return them. There should also be a 'mock_double_()' which does the same except
     // returning a double.
 
@@ -252,7 +252,7 @@ intptr_t mock_(TestReporter* test_reporter, const char *function, const char *mo
 
     destroy_expectation_if_time_to_die(expectation);
 
-    if (stored_result.type == DOUBLE) {
+    if (stored_result.type == CG_DOUBLE) {
 #ifdef V2
         /* TODO: for v2 we should ensure that the user is not trying to return a double
            through 'mock()' when there is a 'mock_double()' available, which there isn't yet.
