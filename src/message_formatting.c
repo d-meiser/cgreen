@@ -71,12 +71,10 @@ static int find_index_of_difference(void *expected, void *actual, size_t size_to
     char *expectedp = expected;
     char *actualp = actual;
 
-    int i = 0;
     while (size_to_compare--) {
         if (*expectedp++ != *actualp++) {
-	    return i;
+            return (int)((char *)actualp - (char*)actual);
         }
-	++i;
     }
 
     return -1;
